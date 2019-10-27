@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root Component renders 1`] = `
+"<div className=\\"root\\">
+  <header className=\\"header\\">
+    <img alt=\\"logo\\" className=\\"logo\\" src=\\"logo.svg\\" />
+    <p>
+      hello 
+      <input onChange={[Function: onChange]} value=\\"world\\" />
+      !
+    </p>
+    <a className=\\"link\\" href=\\"https://reactjs.org\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">
+      Learn React
+    </a>
+  </header>
+</div>"
+`;
