@@ -1,4 +1,5 @@
 export default {
   SET_NAME: 'SET_NAME',
+  SET_NAMES: 'SET_NAMES',
   SET_GREETING: 'SET_GREETING',
 };
