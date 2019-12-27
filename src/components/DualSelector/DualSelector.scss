@@ -1,0 +1,19 @@
+@import '../../stylesheets/modules/classNames';
+@import '../../stylesheets/modules/colors';
+
+.#{$project-name} {
+  .dual-selector {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .vs-block {
+      font-size: 40px;
+      font-weight: 900;
+      padding: 20px;
+      color: #E57373;
+    }
+  }
+}
