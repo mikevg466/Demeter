@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setName } from '../../actions/user';
+import { loadNames } from '../../actions/names';
 import Root from '../../components/Root';
 
 /**
@@ -10,31 +10,39 @@ import Root from '../../components/Root';
  */
 export class RootContainer extends Component {
   /**
+   * React componentDidMount
+   * @return {undefined}
+   */
+  componentDidMount() {
+    const { loadNames } = this.props;
+    loadNames();
+  }
+
+  /**
    * React Render
    * @return {JSX}
    */
   render() {
-    const { name, greeting, setName } = this.props;
-    return <Root greeting={greeting} name={name} setName={setName} />;
+    const { isLoading } = this.props;
+    console.log(isLoading);
+    return <Root isLoading={isLoading} />;
   }
 }
 
 RootContainer.propTypes = {
-  name: PropTypes.string,
-  greeting: PropTypes.string,
-  setName: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  loadNames: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({
-  name: state.user.name,
-  greeting: state.user.greeting,
+  isLoading: !state.names.list.length,
 });
 
 export const mapDispatchToProps = {
-  setName,
+  loadNames,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps //eslint-disable-line
 )(RootContainer);

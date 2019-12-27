@@ -3,12 +3,24 @@ import { shuffle } from '../utils/array';
 
 /**
  * Action creator for SET_NAMES reducer
- * @param {Array} names Array of names to be set in the store
+ * @param {Array} list Array of names to be set in the store
  * @return {Object} action with names array
  */
-export const setNames = names => ({
+export const setNames = list => ({
   type: types.SET_NAMES,
-  names,
+  list,
+});
+
+/**
+ * Action creator for SET_SELECTOR_NAMES reducer
+ * @param {String} firstName First name for user selection
+ * @param {String} secondName Second name for user selection
+ * @return {Object} action with names array
+ */
+export const _setSelectorNames = (firstName, secondName) => ({
+  type: types.SET_SELECTOR_NAMES,
+  firstName,
+  secondName,
 });
 
 /**
@@ -20,4 +32,16 @@ export const loadNames = () => dispatch => {
   const names = ['Angela', 'Greg', 'Kris', 'Meg', 'Mike', 'Tara', 'Wico'];
 
   dispatch(setNames(shuffle(names)));
+};
+
+/**
+ * Temporary function that sets the first and second names in the list
+ *  for user selection names
+ * @return {Undefined}
+ */
+export const setSelectorNames = () => (dispatch, getState) => {
+  const {
+    names: { list },
+  } = getState();
+  dispatch(_setSelectorNames(list[0], list[1]));
 };

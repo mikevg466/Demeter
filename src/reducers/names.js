@@ -3,6 +3,8 @@ import types from '../actions/types';
 
 export const namesInitialState = {
   list: [],
+  firstName: '',
+  secondName: '',
 };
 
 /**
@@ -18,7 +20,12 @@ export default function namesReducer(state = namesInitialState, action) {
   switch (action.type) {
     case types.SET_NAMES:
       return update(state, {
-        names: { $set: action.names || [] },
+        list: { $set: action.list || [] },
+      });
+    case types.SET_SELECTOR_NAMES:
+      return update(state, {
+        firstName: { $set: action.firstName },
+        secondName: { $set: action.secondName },
       });
     default:
       return state;
