@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import logo from '../../assets/images/logo.svg';
+import DualSelectorContainer from '../../containers/DualSelector';
+import Loader from '../../components/Loader';
+import logo from '../../assets/images/baby.svg';
 import './Root.scss';
 
 /**
@@ -13,32 +15,18 @@ export default class RootComponent extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { greeting, name, setName } = this.props;
+    const { isLoading } = this.props;
     return (
       <div className='root'>
         <header className='header'>
           <img alt='logo' className='logo' src={logo} />
-          <p>
-            {`${greeting} `}
-            <input onChange={e => setName(e.target.value)} value={name} />
-            {'!'}
-          </p>
-          <a
-            className='link'
-            href='https://reactjs.org'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
-            Learn React
-          </a>
         </header>
+        {isLoading ? <Loader /> : <DualSelectorContainer />}
       </div>
     );
   }
 }
 
 RootComponent.propTypes = {
-  name: PropTypes.string,
-  greeting: PropTypes.string,
-  setName: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };

@@ -3,35 +3,24 @@
 
 .#{$project-name} {
   .root {
+    height: calc(100vh - 80px);
+    width: 100vw;
+    padding-top: 80px;
+    background-color: $dark-background;
     text-align: center;
 
     .logo {
-      @keyframes Root-logo-spin {
+      @keyframes root-logo-spin {
         from {
           transform: rotate(0deg);
         }
         to {
-          transform: rotate(360deg);
+          transform: rotate(-90deg);
         }
       }
 
-      animation: Root-logo-spin infinite 20s linear;
+      animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
       height: 40vmin;
-
-      .header {
-        background-color: #282c34;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: calc(10px + 2vmin);
-        color: white;
-      }
-
-      .link {
-        color: $link-color;
-      }
     }
   }
 }
