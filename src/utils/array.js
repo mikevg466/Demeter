@@ -20,7 +20,7 @@ const _swap = (array = [], i = 0, j = 0) => {
 export const shuffle = (array = []) => {
   array = array.slice();
   for (let i = array.length - 1; i > 0; i--) {
-    const swapIdx = Math.random() * i;
+    const swapIdx = Math.floor(Math.random() * i);
     _swap(array, i, swapIdx);
   }
   return array;
