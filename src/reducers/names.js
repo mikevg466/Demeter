@@ -1,8 +1,10 @@
 import update from 'immutability-helper';
 import types from '../actions/types';
+import { splitArray } from '../utils/array';
 
 export const namesInitialState = {
-  list: [],
+  rawList: [],
+  sortingList: [],
   firstName: '',
   secondName: '',
 };
@@ -18,9 +20,15 @@ export const namesInitialState = {
  */
 export default function namesReducer(state = namesInitialState, action) {
   switch (action.type) {
+    case types.INITIALIZE_SORTING_LIST: {
+      const sortingList = splitArray(state.rawList);
+      return update(state, {
+        sortingList: { $set: sortingList },
+      });
+    }
     case types.SET_NAMES:
       return update(state, {
-        list: { $set: action.list || [] },
+        rawList: { $set: action.rawList || [] },
       });
     case types.SET_SELECTOR_NAMES:
       return update(state, {

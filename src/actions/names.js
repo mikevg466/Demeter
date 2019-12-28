@@ -2,13 +2,21 @@ import types from './types';
 import { shuffle } from '../utils/array';
 
 /**
- * Action creator for SET_NAMES reducer
- * @param {Array} list Array of names to be set in the store
+ * Action creator for INITIALIZE_SORTING_LIST reducer
  * @return {Object} action with names array
  */
-export const setNames = list => ({
+export const initializeSortingList = () => ({
+  type: types.INITIALIZE_SORTING_LIST,
+});
+
+/**
+ * Action creator for SET_NAMES reducer
+ * @param {Array} rawList Array of names to be set in the store
+ * @return {Object} action with names array
+ */
+export const setNames = rawList => ({
   type: types.SET_NAMES,
-  list,
+  rawList,
 });
 
 /**
@@ -35,13 +43,13 @@ export const loadNames = () => dispatch => {
 };
 
 /**
- * Temporary function that sets the first and second names in the list
+ * Temporary function that sets the first and second names in the rawList
  *  for user selection names
  * @return {Undefined}
  */
 export const setSelectorNames = () => (dispatch, getState) => {
   const {
-    names: { list },
+    names: { rawList },
   } = getState();
-  dispatch(_setSelectorNames(list[0], list[1]));
+  dispatch(_setSelectorNames(rawList[0], rawList[1]));
 };

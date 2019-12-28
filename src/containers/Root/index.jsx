@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadNames } from '../../actions/names';
+import { initializeSortingList, loadNames } from '../../actions/names';
 import Root from '../../components/Root';
 
 /**
@@ -19,6 +19,18 @@ export class RootContainer extends Component {
   }
 
   /**
+   * React componentDidUpdate
+   * @param  {Object} prevProps previous component props
+   */
+  componentDidUpdate(prevProps) {
+    const { initializeSortingList, rawList } = this.props;
+    const { rawList: prevRawList } = prevProps;
+    if (rawList !== prevRawList) {
+      initializeSortingList();
+    }
+  }
+
+  /**
    * React Render
    * @return {JSX}
    */
@@ -31,14 +43,18 @@ export class RootContainer extends Component {
 
 RootContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  initializeSortingList: PropTypes.func.isRequired,
   loadNames: PropTypes.func.isRequired,
+  rawList: PropTypes.array.isRequired,
 };
 
 export const mapStateToProps = state => ({
-  isLoading: !state.names.list.length,
+  isLoading: !state.names.rawList.length,
+  rawList: state.names.rawList,
 });
 
 export const mapDispatchToProps = {
+  initializeSortingList,
   loadNames,
 };
 

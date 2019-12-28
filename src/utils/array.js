@@ -25,3 +25,21 @@ export const shuffle = (array = []) => {
   }
   return array;
 };
+
+/**
+ * Breaks an array into an array of arrays, each with a max length of 2.
+ *  This will be used in sorting algorithms
+ * @param  {Array}  [array=[]] array to break down
+ * @return {Array}            An array of arrays, each sub array with a max
+ *                              length of 2 and containing the original arrays
+ *                              values.
+ */
+export const splitArray = (array = []) => {
+  if (array.length <= 2) return [array.slice()];
+
+  const middleIdx = Math.floor(array.length / 2);
+  const leftSplit = splitArray(array.slice(0, middleIdx));
+  const rightSplit = splitArray(array.slice(middleIdx));
+
+  return [...leftSplit, ...rightSplit];
+};
