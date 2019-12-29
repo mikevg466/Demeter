@@ -1,0 +1,33 @@
+@import '../../stylesheets/modules/classNames';
+@import '../../stylesheets/modules/colors';
+
+.#{$project-name} {
+  .final-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      font-size: 20px;
+      text-decoration: underline;
+      color: #E57373;
+      cursor: pointer;
+    }
+
+    span:hover {
+      color: #FFCDD2;
+    }
+
+    ol {
+      font-size: 30px;
+      font-weight: 900;
+      color: #2196F3;
+      max-height: 300px;
+      overflow-y: auto;
+
+      li {
+        text-align: left;
+      }
+    }
+  }
+}
