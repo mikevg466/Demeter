@@ -4,11 +4,18 @@
 .#{$project-name} {
   .name-container {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     font-size: 80px;
     font-weight: 900;
     color: #2196F3;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .name-container:hover {
+    color: #90CAF9;
   }
 }
