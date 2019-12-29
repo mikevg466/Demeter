@@ -21,14 +21,21 @@ export const setNames = rawList => ({
 
 /**
  * Action creator for SET_SELECTOR_NAMES reducer
- * @param {String} firstName First name for user selection
- * @param {String} secondName Second name for user selection
  * @return {Object} action with names array
  */
-export const _setSelectorNames = (firstName, secondName) => ({
+export const setSelectorNames = () => ({
   type: types.SET_SELECTOR_NAMES,
-  firstName,
-  secondName,
+});
+
+/**
+ * Action creator for SORT_SELECTOR_NAMES reducer
+ * @param {Number} compareValue A positive or negative number to show
+ *                                how the user wants to sort the names.
+ * @return {Object} action with names array
+ */
+export const sortSelectorNames = compareValue => ({
+  type: types.SORT_SELECTOR_NAMES,
+  compareValue,
 });
 
 /**
@@ -43,13 +50,13 @@ export const loadNames = () => dispatch => {
 };
 
 /**
- * Temporary function that sets the first and second names in the rawList
- *  for user selection names
- * @return {Undefined}
+ * Selects a name from two choices and updates the sort list then sets new names
+ *  to compare.
+ * @param {Number} compareValue A positive or negative number to show
+ *                                how the user wants to sort the names.
+ * @return {undfined}
  */
-export const setSelectorNames = () => (dispatch, getState) => {
-  const {
-    names: { rawList },
-  } = getState();
-  dispatch(_setSelectorNames(rawList[0], rawList[1]));
+export const selectName = compareValue => dispatch => {
+  dispatch(sortSelectorNames(compareValue));
+  dispatch(setSelectorNames());
 };

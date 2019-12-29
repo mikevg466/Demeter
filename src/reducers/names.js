@@ -5,8 +5,14 @@ import { splitArray } from '../utils/array';
 export const namesInitialState = {
   rawList: [],
   sortingList: [],
+  currentSortList: [],
+  finalList: [],
   firstName: '',
   secondName: '',
+  mainIdx: 0,
+  leftIdx: 0,
+  rightIdx: 0,
+  isSortingFinished: false,
 };
 
 /**
@@ -30,11 +36,79 @@ export default function namesReducer(state = namesInitialState, action) {
       return update(state, {
         rawList: { $set: action.rawList || [] },
       });
-    case types.SET_SELECTOR_NAMES:
+    case types.SET_SELECTOR_NAMES: {
+      const { sortingList, mainIdx, leftIdx, rightIdx, finalList } = state;
+      let nextFinalList = finalList;
+      const isSortingFinished =
+        !sortingList[mainIdx] || !sortingList[mainIdx + 1];
+
+      let firstName;
+      let secondName;
+      if (!isSortingFinished) {
+        firstName = sortingList[mainIdx][leftIdx];
+        secondName = sortingList[mainIdx + 1][rightIdx];
+      }
+      if (isSortingFinished) {
+        nextFinalList = sortingList[0].slice();
+      }
       return update(state, {
-        firstName: { $set: action.firstName },
-        secondName: { $set: action.secondName },
+        isSortingFinished: { $set: isSortingFinished },
+        firstName: { $set: firstName || '' },
+        finalList: { $set: nextFinalList },
+        secondName: { $set: secondName || '' },
       });
+    }
+    case types.SORT_SELECTOR_NAMES: {
+      const { compareValue } = action;
+      let { leftIdx, rightIdx, mainIdx, sortingList, currentSortList } = state;
+      currentSortList = currentSortList.slice();
+
+      if (compareValue < 0) {
+        currentSortList.push(sortingList[mainIdx][leftIdx]);
+        leftIdx++;
+      } else if (compareValue > 0) {
+        currentSortList.push(sortingList[mainIdx + 1][rightIdx]);
+        rightIdx++;
+      }
+
+      const isCurrentSortFinished =
+        leftIdx >= sortingList[mainIdx].length ||
+        rightIdx >= sortingList[mainIdx + 1].length;
+
+      if (isCurrentSortFinished) {
+        sortingList = sortingList.slice();
+
+        if (leftIdx < sortingList[mainIdx].length) {
+          currentSortList = [
+            ...currentSortList,
+            ...sortingList[mainIdx].slice(leftIdx),
+          ];
+        }
+        if (rightIdx < sortingList[mainIdx + 1].length) {
+          currentSortList = [
+            ...currentSortList,
+            ...sortingList[mainIdx + 1].slice(rightIdx),
+          ];
+        }
+
+        sortingList.splice(mainIdx, 2, currentSortList.slice());
+        currentSortList = [];
+        mainIdx++;
+        leftIdx = 0;
+        rightIdx = 0;
+        if (sortingList.length - mainIdx < 2) {
+          mainIdx = 0;
+        }
+      }
+
+      return update(state, {
+        leftIdx: { $set: leftIdx },
+        rightIdx: { $set: rightIdx },
+        mainIdx: { $set: mainIdx },
+        sortingList: { $set: sortingList },
+        currentSortList: { $set: currentSortList },
+      });
+    }
     default:
       return state;
   }
