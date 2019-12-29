@@ -13,12 +13,12 @@ export default class DualSelector extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { firstName, secondName } = this.props;
+    const { firstName, handleClick, secondName } = this.props;
     return (
       <div className='dual-selector'>
-        <NameContainer name={firstName} />
+        <NameContainer handleClick={() => handleClick(-1)} name={firstName} />
         <span className='vs-block'>VS</span>
-        <NameContainer name={secondName} />
+        <NameContainer handleClick={() => handleClick(1)} name={secondName} />
       </div>
     );
   }
@@ -26,5 +26,6 @@ export default class DualSelector extends PureComponent {
 
 DualSelector.propTypes = {
   firstName: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
   secondName: PropTypes.string.isRequired,
 };

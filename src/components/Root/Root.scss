@@ -9,18 +9,22 @@
     background-color: $dark-background;
     text-align: center;
 
-    .logo {
-      @keyframes root-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(-90deg);
-        }
-      }
+    .header {
+      padding-bottom: 100px;
 
-      animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
-      height: 40vmin;
+      .logo {
+        @keyframes root-logo-spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(-90deg);
+          }
+        }
+
+        animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
+        height: 40vmin;
+      }
     }
   }
 }

@@ -2,25 +2,40 @@ import types from './types';
 import { shuffle } from '../utils/array';
 
 /**
- * Action creator for SET_NAMES reducer
- * @param {Array} list Array of names to be set in the store
+ * Action creator for INITIALIZE_SORTING_LIST reducer
  * @return {Object} action with names array
  */
-export const setNames = list => ({
+export const initializeSortingList = () => ({
+  type: types.INITIALIZE_SORTING_LIST,
+});
+
+/**
+ * Action creator for SET_NAMES reducer
+ * @param {Array} rawList Array of names to be set in the store
+ * @return {Object} action with names array
+ */
+export const setNames = rawList => ({
   type: types.SET_NAMES,
-  list,
+  rawList,
 });
 
 /**
  * Action creator for SET_SELECTOR_NAMES reducer
- * @param {String} firstName First name for user selection
- * @param {String} secondName Second name for user selection
  * @return {Object} action with names array
  */
-export const _setSelectorNames = (firstName, secondName) => ({
+export const setSelectorNames = () => ({
   type: types.SET_SELECTOR_NAMES,
-  firstName,
-  secondName,
+});
+
+/**
+ * Action creator for SORT_SELECTOR_NAMES reducer
+ * @param {Number} compareValue A positive or negative number to show
+ *                                how the user wants to sort the names.
+ * @return {Object} action with names array
+ */
+export const sortSelectorNames = compareValue => ({
+  type: types.SORT_SELECTOR_NAMES,
+  compareValue,
 });
 
 /**
@@ -35,13 +50,13 @@ export const loadNames = () => dispatch => {
 };
 
 /**
- * Temporary function that sets the first and second names in the list
- *  for user selection names
- * @return {Undefined}
+ * Selects a name from two choices and updates the sort list then sets new names
+ *  to compare.
+ * @param {Number} compareValue A positive or negative number to show
+ *                                how the user wants to sort the names.
+ * @return {undfined}
  */
-export const setSelectorNames = () => (dispatch, getState) => {
-  const {
-    names: { list },
-  } = getState();
-  dispatch(_setSelectorNames(list[0], list[1]));
+export const selectName = compareValue => dispatch => {
+  dispatch(sortSelectorNames(compareValue));
+  dispatch(setSelectorNames());
 };

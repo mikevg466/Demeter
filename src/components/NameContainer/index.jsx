@@ -13,9 +13,9 @@ export default class NameContainer extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { name } = this.props;
+    const { handleClick, name } = this.props;
     return (
-      <div className='name-container'>
+      <div className='name-container' onClick={handleClick}>
         <span>{name}</span>
       </div>
     );
@@ -23,5 +23,6 @@ export default class NameContainer extends PureComponent {
 }
 
 NameContainer.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
 };

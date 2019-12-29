@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import DualSelectorContainer from '../../containers/DualSelector';
+import FinalViewContainer from '../../containers/FinalView';
 import Loader from '../../components/Loader';
 import logo from '../../assets/images/baby.svg';
 import './Root.scss';
@@ -15,13 +16,19 @@ export default class RootComponent extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, isSortingFinished } = this.props;
     return (
       <div className='root'>
         <header className='header'>
           <img alt='logo' className='logo' src={logo} />
         </header>
-        {isLoading ? <Loader /> : <DualSelectorContainer />}
+        {isLoading ? (
+          <Loader />
+        ) : isSortingFinished ? (
+          <FinalViewContainer />
+        ) : (
+          <DualSelectorContainer />
+        )}
       </div>
     );
   }
@@ -29,4 +36,5 @@ export default class RootComponent extends PureComponent {
 
 RootComponent.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  isSortingFinished: PropTypes.bool.isRequired,
 };
