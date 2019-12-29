@@ -35,11 +35,5 @@ export const shuffle = (array = []) => {
  *                              values.
  */
 export const splitArray = (array = []) => {
-  if (array.length <= 2) return [array.slice()];
-
-  const middleIdx = Math.floor(array.length / 2);
-  const leftSplit = splitArray(array.slice(0, middleIdx));
-  const rightSplit = splitArray(array.slice(middleIdx));
-
-  return [...leftSplit, ...rightSplit];
+  return array.map(val => [val]);
 };
