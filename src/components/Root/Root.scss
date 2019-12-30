@@ -31,6 +31,21 @@
           fill: $girl-dark;
         }
         .swaddle-dark {
+          fill: $neutral-dark;
+        }
+        .swaddle-light {
+          fill: $neutral-light;
+        }
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .root.boy {
+    .header {
+      .logo {
+        .swaddle-dark {
           fill: $boy-dark;
         }
         .swaddle-light {
