@@ -32,12 +32,27 @@ export default function namesReducer(state = namesInitialState, action) {
         sortingList: { $set: sortingList },
       });
     }
+    case types.RESET_NAMES:
+      return update(state, {
+        rawList: { $set: namesInitialState.rawList },
+        sortingList: { $set: namesInitialState.sortingList },
+        currentSortList: { $set: namesInitialState.currentSortList },
+        finalList: { $set: namesInitialState.finalList },
+        firstName: { $set: namesInitialState.firstName },
+        secondName: { $set: namesInitialState.secondName },
+        mainIdx: { $set: namesInitialState.mainIdx },
+        leftIdx: { $set: namesInitialState.leftIdx },
+        rightIdx: { $set: namesInitialState.rightIdx },
+        isSortingFinished: { $set: namesInitialState.isSortingFinished },
+      });
     case types.SET_NAMES:
       return update(state, {
         rawList: { $set: action.rawList || [] },
       });
     case types.SET_SELECTOR_NAMES: {
       const { sortingList, mainIdx, leftIdx, rightIdx, finalList } = state;
+      if (!sortingList.length) return state;
+
       let nextFinalList = finalList;
       const isSortingFinished =
         !sortingList[mainIdx] || !sortingList[mainIdx + 1];

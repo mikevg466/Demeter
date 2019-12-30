@@ -1,5 +1,6 @@
 import types from './types';
 import { shuffle } from '../utils/array';
+import NAMES from '../assets/data/names.json';
 
 /**
  * Action creator for INITIALIZE_SORTING_LIST reducer
@@ -7,6 +8,14 @@ import { shuffle } from '../utils/array';
  */
 export const initializeSortingList = () => ({
   type: types.INITIALIZE_SORTING_LIST,
+});
+
+/**
+ * Action creator for RESET_NAMES reducer
+ * @return {Object} action with names array
+ */
+export const resetNames = () => ({
+  type: types.RESET_NAMES,
 });
 
 /**
@@ -40,11 +49,15 @@ export const sortSelectorNames = compareValue => ({
 
 /**
  * Loads names from source which are shuffled and saved to the store
+ * @param {String} [genderType='M'] M for male, F for female.  Defaults to M
  * @return {undfined}
  */
-export const loadNames = () => dispatch => {
-  // TODO: Replace test names below with names sourced from the database
-  const names = ['Angela', 'Greg', 'Kris', 'Meg', 'Mike', 'Tara', 'Wico'];
+export const loadNames = (genderType = 'M') => dispatch => {
+  dispatch(resetNames());
+  const names = NAMES.data
+    .filter(({ gender }) => gender === genderType)
+    .slice(0, 100)
+    .map(({ name }) => name);
 
   dispatch(setNames(shuffle(names)));
 };
