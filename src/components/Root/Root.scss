@@ -11,8 +11,26 @@
 
     .header {
       padding-bottom: 100px;
+      height: 40%;
+
+      .back-arrow {
+        text-align: left;
+        padding-left: 20px;
+        font-size: 50px;
+        cursor: pointer;
+        color: $neutral-dark;
+      }
+      .back-arrow:hover {
+        color: $neutral-light;
+      }
+      .back-arrow.hidden {
+        visibility: hidden;
+      }
 
       .logo {
+        margin: 0 15%;
+        height: 80%;
+
         @keyframes root-logo-spin {
           from {
             transform: rotate(0deg);
@@ -23,7 +41,46 @@
         }
 
         animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
-        height: 40vmin;
+
+        .cheeks {
+          fill: $girl-dark;
+        }
+        .swaddle-dark {
+          fill: $neutral-dark;
+        }
+        .swaddle-light {
+          fill: $neutral-light;
+        }
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .root.boy {
+    .header {
+      .logo {
+        .swaddle-dark {
+          fill: $boy-dark;
+        }
+        .swaddle-light {
+          fill: $boy-light;
+        }
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .root.girl {
+    .header {
+      .logo {
+        .swaddle-dark {
+          fill: $girl-dark;
+        }
+        .swaddle-light {
+          fill: $girl-light;
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ import './DualSelector.scss';
 
 /**
  * Selector Container For showing a user two options for selection
- * @extends Component
+ * @extends PureComponent
  */
 export default class DualSelector extends PureComponent {
   /**

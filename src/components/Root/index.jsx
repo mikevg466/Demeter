@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import GenderSelectorContainer from '../../containers/GenderSelector';
 import DualSelectorContainer from '../../containers/DualSelector';
 import FinalViewContainer from '../../containers/FinalView';
 import Loader from '../../components/Loader';
-import logo from '../../assets/images/baby.svg';
+import Logo from '../Icons/Baby';
+import Constants from '../../utils/constants';
 import './Root.scss';
 
 /**
@@ -16,13 +18,36 @@ export default class RootComponent extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { isLoading, isSortingFinished } = this.props;
+    const {
+      genderType,
+      isLoading,
+      isSortingFinished,
+      setGenderType,
+    } = this.props;
+    const isGenderSelected = !!genderType;
+
+    const {
+      GENDER_TYPES: { MALE, FEMALE },
+    } = Constants;
+    const genderClassName =
+      genderType === MALE ? 'boy' : genderType === FEMALE ? 'girl' : '';
+
     return (
-      <div className='root'>
+      <div className={`root ${genderClassName}`}>
         <header className='header'>
-          <img alt='logo' className='logo' src={logo} />
+          <div
+            className={`back-arrow ${isGenderSelected ? '' : 'hidden'}`}
+            onClick={() => setGenderType('')}
+          >
+            {'<'}
+          </div>
+          <div className='logo'>
+            <Logo />
+          </div>
         </header>
-        {isLoading ? (
+        {!isGenderSelected ? (
+          <GenderSelectorContainer />
+        ) : isLoading ? (
           <Loader />
         ) : isSortingFinished ? (
           <FinalViewContainer />
@@ -35,6 +60,8 @@ export default class RootComponent extends PureComponent {
 }
 
 RootComponent.propTypes = {
+  genderType: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSortingFinished: PropTypes.bool.isRequired,
+  setGenderType: PropTypes.func.isRequired,
 };
