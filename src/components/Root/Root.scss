@@ -3,9 +3,9 @@
 
 .#{$project-name} {
   .root {
-    height: calc(100vh - 80px);
-    width: 100vw;
-    padding-top: 80px;
+    height: calc(100vh - 100px);
+    width: calc(100vw - 40px);
+    padding: 20px 20px 80px 20px;
     background-color: $dark-background;
     text-align: center;
 
