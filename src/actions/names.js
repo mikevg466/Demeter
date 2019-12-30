@@ -19,6 +19,16 @@ export const resetNames = () => ({
 });
 
 /**
+ * Action creator for SET_GENDER_TYPE reducer
+ * @param {String} genderType Gender type constant: M for male, F for female
+ * @return {Object} action with names array
+ */
+export const setGenderType = genderType => ({
+  type: types.SET_GENDER_TYPE,
+  genderType,
+});
+
+/**
  * Action creator for SET_NAMES reducer
  * @param {Array} rawList Array of names to be set in the store
  * @return {Object} action with names array

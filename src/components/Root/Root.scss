@@ -13,9 +13,24 @@
       padding-bottom: 100px;
       height: 40%;
 
+      .back-arrow {
+        text-align: left;
+        padding-left: 20px;
+        font-size: 50px;
+        cursor: pointer;
+        color: $neutral-dark;
+      }
+      .back-arrow:hover {
+        color: $neutral-light;
+      }
+      .back-arrow.hidden {
+        visibility: hidden;
+      }
+
       .logo {
         margin: 0 10%;
         height: 80%;
+
         @keyframes root-logo-spin {
           from {
             transform: rotate(0deg);

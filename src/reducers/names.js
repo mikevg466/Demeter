@@ -13,6 +13,7 @@ export const namesInitialState = {
   leftIdx: 0,
   rightIdx: 0,
   isSortingFinished: false,
+  genderType: '',
 };
 
 /**
@@ -44,6 +45,10 @@ export default function namesReducer(state = namesInitialState, action) {
         leftIdx: { $set: namesInitialState.leftIdx },
         rightIdx: { $set: namesInitialState.rightIdx },
         isSortingFinished: { $set: namesInitialState.isSortingFinished },
+      });
+    case types.SET_GENDER_TYPE:
+      return update(state, {
+        genderType: { $set: action.genderType || '' },
       });
     case types.SET_NAMES:
       return update(state, {
