@@ -12,7 +12,17 @@
       font-size: 40px;
       font-weight: 900;
       padding: 20px;
-      color: #E57373;
+      color: $girl-dark;
+    }
+  }
+}
+
+.#{$project-name} {
+  .girl{
+    .dual-selector {
+      .vs-block {
+        color: $boy-dark;
+      }
     }
   }
 }

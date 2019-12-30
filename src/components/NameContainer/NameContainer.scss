@@ -10,12 +10,23 @@
     justify-content: center;
     font-size: 80px;
     font-weight: 900;
-    color: #2196F3;
+    color: $boy-dark;
     cursor: pointer;
     margin: 10px;
   }
 
   .name-container:hover {
-    color: #90CAF9;
+    color: $boy-light;
+  }
+}
+
+.#{$project-name} {
+  .girl{
+    .name-container {
+      color: $girl-dark;
+    }
+    name-container:hover {
+      color: $girl-light;
+    }
   }
 }

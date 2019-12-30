@@ -27,11 +27,29 @@
 
         animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
 
+        .cheeks {
+          fill: $girl-dark;
+        }
         .swaddle-dark {
-          fill: #38648C;
+          fill: $boy-dark;
         }
         .swaddle-light {
-          fill: #76B7EB;
+          fill: $boy-light;
+        }
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .root.girl {
+    .header {
+      .logo {
+        .swaddle-dark {
+          fill: $girl-dark;
+        }
+        .swaddle-light {
+          fill: $girl-light;
         }
       }
     }

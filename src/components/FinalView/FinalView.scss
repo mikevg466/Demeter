@@ -10,24 +10,42 @@
     span {
       font-size: 20px;
       text-decoration: underline;
-      color: #E57373;
+      color: $girl-dark;
       cursor: pointer;
     }
 
     span:hover {
-      color: #FFCDD2;
+      color: $girl-light;
     }
 
     ol {
       font-size: 30px;
       font-weight: 900;
-      color: #2196F3;
+      color: $boy-dark;
       max-height: 280px;
       overflow-y: auto;
       padding-left: 150px;
 
       li {
         text-align: left;
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .girl {
+    .final-view {
+      span {
+        color: $boy-dark;
+      }
+
+      span:hover {
+        color: $boy-light;
+      }
+
+      ol {
+        color: $girl-dark;
       }
     }
   }
