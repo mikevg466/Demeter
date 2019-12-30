@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DualSelectorContainer from '../../containers/DualSelector';
 import FinalViewContainer from '../../containers/FinalView';
 import Loader from '../../components/Loader';
-import logo from '../../assets/images/baby.svg';
+import Logo from '../Icons/Baby';
 import './Root.scss';
 
 /**
@@ -20,7 +20,9 @@ export default class RootComponent extends PureComponent {
     return (
       <div className='root'>
         <header className='header'>
-          <img alt='logo' className='logo' src={logo} />
+          <div className='logo'>
+            <Logo />
+          </div>
         </header>
         {isLoading ? (
           <Loader />

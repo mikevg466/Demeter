@@ -11,8 +11,11 @@
 
     .header {
       padding-bottom: 100px;
+      height: 40%;
 
       .logo {
+        margin: 0 10%;
+        height: 80%;
         @keyframes root-logo-spin {
           from {
             transform: rotate(0deg);
@@ -23,7 +26,13 @@
         }
 
         animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
-        height: 40vmin;
+
+        .swaddle-dark {
+          fill: #38648C;
+        }
+        .swaddle-light {
+          fill: #76B7EB;
+        }
       }
     }
   }
