@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 
 /**
  * Renders baby icon
- * @type {String}
+ * @extends PureComponent
  */
 export default class BabyIcon extends PureComponent {
   /**

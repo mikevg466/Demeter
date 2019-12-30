@@ -3,8 +3,7 @@ import logo from '../../assets/images/logo.svg';
 import './Loader.scss';
 
 /**
- * Name Container for displaying a single name to choose with
- *  selection dispatchers for sort logic when clicked
+ * Loader Container for displaying a spinning loader icon
  * @extends Component
  */
 export default class Loader extends PureComponent {

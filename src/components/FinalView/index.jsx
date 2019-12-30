@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './FinalView.scss';
 
 /**
- * Name Container for displaying a single name to choose with
- *  selection dispatchers for sort logic when clicked
- * @extends Component
+ * Final View Container for showing the user the final list with all of the
+ *  sorted selections after the finalList state is created.
+ * @extends PureComponent
  */
 export default class FinalView extends PureComponent {
   /**
