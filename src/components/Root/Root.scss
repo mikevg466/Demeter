@@ -27,29 +27,36 @@
         visibility: hidden;
       }
 
-      .logo {
-        margin: 0 15%;
-        height: 80%;
+      .logo-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-        @keyframes root-logo-spin {
-          from {
-            transform: rotate(0deg);
+        .logo {
+          width: 30%;
+
+          @keyframes root-logo-spin {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(-90deg);
+            }
           }
-          to {
-            transform: rotate(-90deg);
+
+          animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
+
+          .cheeks {
+            fill: $girl-dark;
           }
-        }
-
-        animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
-
-        .cheeks {
-          fill: $girl-dark;
-        }
-        .swaddle-dark {
-          fill: $neutral-dark;
-        }
-        .swaddle-light {
-          fill: $neutral-light;
+          .swaddle-dark {
+            fill: $neutral-dark;
+          }
+          .swaddle-light {
+            fill: $neutral-light;
+          }
         }
       }
     }
