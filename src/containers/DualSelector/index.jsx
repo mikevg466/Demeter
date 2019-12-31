@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DualSelector from '../../components/DualSelector';
-import { selectName } from '../../actions/names';
+import { removeName, selectName } from '../../actions/names';
 
 /**
  * Selector Container For showing a user two options for selection
@@ -14,12 +14,13 @@ export class DualSelectorContainer extends Component {
    * @return {JSX}
    */
   render() {
-    const { firstName, secondName, selectName } = this.props;
+    const { firstName, removeName, secondName, selectName } = this.props;
     return (
       <DualSelector
         firstName={firstName}
-        handleClick={selectName}
+        removeName={removeName}
         secondName={secondName}
+        selectName={selectName}
       />
     );
   }
@@ -27,6 +28,7 @@ export class DualSelectorContainer extends Component {
 
 DualSelectorContainer.propTypes = {
   firstName: PropTypes.string.isRequired,
+  removeName: PropTypes.func.isRequired,
   secondName: PropTypes.string.isRequired,
   selectName: PropTypes.func.isRequired,
 };
@@ -37,6 +39,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = {
+  removeName,
   selectName,
 };
 

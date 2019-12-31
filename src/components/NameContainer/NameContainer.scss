@@ -6,27 +6,57 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 80px;
-    font-weight: 900;
-    color: $boy-dark;
-    cursor: pointer;
-    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    .name {
+      flex: 3 1 auto;
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      margin: 10px;
+      font-size: 80px;
+      font-weight: 900;
+      color: $boy-dark;
+      cursor: pointer;
+    }
+    .name:hover {
+      color: $boy-light;
+    }
+
+    .remove-icon {
+      flex: 1 0 auto;
+
+      visibility: hidden;
+      color: #DD2C00;
+      font-size: 30px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .remove-icon:hover {
+      color: #FF6E40;
+    }
   }
 
   .name-container:hover {
-    color: $boy-light;
+    .remove-icon {
+      visibility: visible;
+    }
   }
 }
 
 .#{$project-name} {
   .girl{
     .name-container {
-      color: $girl-dark;
-    }
-    .name-container:hover {
-      color: $girl-light;
+      .name {
+        color: $girl-dark;
+      }
+      .name:hover {
+        color: $girl-light;
+      }
     }
   }
 }

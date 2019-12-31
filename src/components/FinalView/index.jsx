@@ -19,7 +19,7 @@ export default class FinalView extends PureComponent {
         <span onClick={handleClick}>Reset</span>
         <ol>
           {finalList.map(name => (
-            <li>{name}</li>
+            <li key={name}>{name}</li>
           ))}
         </ol>
       </div>

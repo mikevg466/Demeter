@@ -15,18 +15,25 @@ export class FinalViewContainer extends Component {
    * @return {JSX}
    */
   render() {
-    const { finalList, loadNames } = this.props;
-    return <FinalView finalList={finalList} handleClick={loadNames} />;
+    const { finalList, genderType, loadNames } = this.props;
+    return (
+      <FinalView
+        finalList={finalList}
+        handleClick={() => loadNames(genderType)}
+      />
+    );
   }
 }
 
 FinalViewContainer.propTypes = {
   finalList: PropTypes.array.isRequired,
+  genderType: PropTypes.string.isRequired,
   loadNames: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({
   finalList: state.names.finalList,
+  genderType: state.names.genderType,
 });
 
 export const mapDispatchToProps = { loadNames };

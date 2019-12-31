@@ -41,8 +41,10 @@ export default class RootComponent extends PureComponent {
           >
             {'<'}
           </div>
-          <div className='logo'>
-            <Logo />
+          <div className='logo-container'>
+            <div className='logo'>
+              <Logo />
+            </div>
           </div>
         </header>
         {!isGenderSelected ? (

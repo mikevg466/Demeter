@@ -79,15 +79,19 @@ export default function namesReducer(state = namesInitialState, action) {
       });
     }
     case types.SORT_SELECTOR_NAMES: {
-      const { compareValue } = action;
+      const { compareValue, removeName } = action;
       let { leftIdx, rightIdx, mainIdx, sortingList, currentSortList } = state;
       currentSortList = currentSortList.slice();
 
       if (compareValue < 0) {
-        currentSortList.push(sortingList[mainIdx][leftIdx]);
+        if (!removeName) {
+          currentSortList.push(sortingList[mainIdx][leftIdx]);
+        }
         leftIdx++;
       } else if (compareValue > 0) {
-        currentSortList.push(sortingList[mainIdx + 1][rightIdx]);
+        if (!removeName) {
+          currentSortList.push(sortingList[mainIdx + 1][rightIdx]);
+        }
         rightIdx++;
       }
 

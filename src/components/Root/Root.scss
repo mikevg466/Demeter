@@ -3,9 +3,9 @@
 
 .#{$project-name} {
   .root {
-    height: calc(100vh - 80px);
-    width: 100vw;
-    padding-top: 80px;
+    height: calc(100vh - 100px);
+    width: calc(100vw - 40px);
+    padding: 20px 20px 80px 20px;
     background-color: $dark-background;
     text-align: center;
 
@@ -27,29 +27,36 @@
         visibility: hidden;
       }
 
-      .logo {
-        margin: 0 15%;
-        height: 80%;
+      .logo-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-        @keyframes root-logo-spin {
-          from {
-            transform: rotate(0deg);
+        .logo {
+          width: 30%;
+
+          @keyframes root-logo-spin {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(-90deg);
+            }
           }
-          to {
-            transform: rotate(-90deg);
+
+          animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
+
+          .cheeks {
+            fill: $girl-dark;
           }
-        }
-
-        animation: root-logo-spin 3s ease-in-out 1s infinite alternate;
-
-        .cheeks {
-          fill: $girl-dark;
-        }
-        .swaddle-dark {
-          fill: $neutral-dark;
-        }
-        .swaddle-light {
-          fill: $neutral-light;
+          .swaddle-dark {
+            fill: $neutral-dark;
+          }
+          .swaddle-light {
+            fill: $neutral-light;
+          }
         }
       }
     }
