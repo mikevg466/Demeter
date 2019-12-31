@@ -50,11 +50,14 @@ export const setSelectorNames = () => ({
  * Action creator for SORT_SELECTOR_NAMES reducer
  * @param {Number} compareValue A positive or negative number to show
  *                                how the user wants to sort the names.
+ * @param {Boolean} [removeName=false] True if the compareValue represents a
+ *                                      name to remove instead of sorted
  * @return {Object} action with names array
  */
-export const sortSelectorNames = compareValue => ({
+export const sortSelectorNames = (compareValue, removeName = false) => ({
   type: types.SORT_SELECTOR_NAMES,
   compareValue,
+  removeName,
 });
 
 /**
@@ -66,10 +69,22 @@ export const loadNames = (genderType = 'M') => dispatch => {
   dispatch(resetNames());
   const names = NAMES.data
     .filter(({ gender }) => gender === genderType)
-    .slice(0, 100)
+    .slice(0, 1000)
     .map(({ name }) => name);
 
   dispatch(setNames(shuffle(names)));
+};
+
+/**
+ * Removes a name from two choices and updates the sort list then sets new names
+ *  to compare.
+ * @param {Number} compareValue A positive or negative number to show
+ *                                how the user wants to sort the names.
+ * @return {undfined}
+ */
+export const removeName = compareValue => dispatch => {
+  dispatch(sortSelectorNames(compareValue, true));
+  dispatch(setSelectorNames());
 };
 
 /**

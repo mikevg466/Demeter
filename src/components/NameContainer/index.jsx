@@ -13,16 +13,22 @@ export default class NameContainer extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { handleClick, name } = this.props;
+    const { name, removeName, selectName } = this.props;
     return (
-      <div className='name-container' onClick={handleClick}>
-        <span>{name}</span>
+      <div className='name-container'>
+        <div className='name' onClick={selectName}>
+          {name}
+        </div>
+        <div className='remove-icon' onClick={removeName}>
+          {'X'}
+        </div>
       </div>
     );
   }
 }
 
 NameContainer.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  removeName: PropTypes.func.isRequired,
+  selectName: PropTypes.func.isRequired,
 };
