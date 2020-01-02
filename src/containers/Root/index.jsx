@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  initializeSortingList,
   loadNames,
   setGenderType,
   setSelectorNames,
@@ -19,22 +18,11 @@ export class RootContainer extends Component {
    * @param  {Object} prevProps previous component props
    */
   componentDidUpdate(prevProps) {
-    const {
-      genderType,
-      initializeSortingList,
-      loadNames,
-      rawList,
-      setSelectorNames,
-      sortingList,
-    } = this.props;
+    const { genderType, loadNames, setSelectorNames, sortingList } = this.props;
     const {
       genderType: prevGenderType,
-      rawList: prevRawList,
       sortingList: prevSortingList,
     } = prevProps;
-    if (rawList !== prevRawList) {
-      initializeSortingList();
-    }
 
     if (sortingList !== prevSortingList) {
       setSelectorNames();
@@ -52,12 +40,17 @@ export class RootContainer extends Component {
   render() {
     const {
       genderType,
-      isLoading,
       isSortingFinished,
+      rawList,
       setGenderType,
+      sortingList,
     } = this.props;
+    const isLoading = !rawList.length;
+    const displayListPreview = !sortingList.length;
+
     return (
       <Root
+        displayListPreview={displayListPreview}
         genderType={genderType}
         isLoading={isLoading}
         isSortingFinished={isSortingFinished}
@@ -69,9 +62,7 @@ export class RootContainer extends Component {
 
 RootContainer.propTypes = {
   genderType: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   isSortingFinished: PropTypes.bool.isRequired,
-  initializeSortingList: PropTypes.func.isRequired,
   loadNames: PropTypes.func.isRequired,
   rawList: PropTypes.array.isRequired,
   setGenderType: PropTypes.func.isRequired,
@@ -81,14 +72,12 @@ RootContainer.propTypes = {
 
 export const mapStateToProps = state => ({
   genderType: state.names.genderType,
-  isLoading: !state.names.rawList.length,
   isSortingFinished: state.names.isSortingFinished,
   rawList: state.names.rawList,
   sortingList: state.names.sortingList,
 });
 
 export const mapDispatchToProps = {
-  initializeSortingList,
   loadNames,
   setGenderType,
   setSelectorNames,

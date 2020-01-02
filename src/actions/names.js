@@ -1,6 +1,17 @@
 import types from './types';
 import { shuffle } from '../utils/array';
 import NAMES from '../assets/data/names.json';
+// import NAMES from '../assets/data/namesCustom.json';
+
+/**
+ * Action creator for DELETE_PREVIEW_NAME reducer
+ * @param {Number} index The index of the array item to delete
+ * @return {Object} action with names array
+ */
+export const deletePreviewName = index => ({
+  type: types.DELETE_PREVIEW_NAME,
+  index,
+});
 
 /**
  * Action creator for INITIALIZE_SORTING_LIST reducer

@@ -1,0 +1,67 @@
+@import '../../stylesheets/modules/classNames';
+@import '../../stylesheets/modules/colors';
+
+.#{$project-name} {
+  .list-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > span {
+      font-size: 20px;
+      text-decoration: underline;
+      color: $girl-dark;
+      cursor: pointer;
+    }
+
+    > span:hover {
+      color: $girl-light;
+    }
+
+    ol {
+      font-size: 30px;
+      font-weight: 900;
+      color: $boy-dark;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-left: 150px;
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        .name {}
+        .delete-button {
+          padding: 0 6px;
+          color: #DD2C00;
+          font-size: 20px;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .delete-button:hover {
+          color: #FF6E40;
+        }
+      }
+    }
+  }
+}
+
+.#{$project-name} {
+  .girl {
+    .list-preview {
+      > span {
+        color: $boy-dark;
+      }
+
+      > span:hover {
+        color: $boy-light;
+      }
+
+      ol {
+        color: $girl-dark;
+      }
+    }
+  }
+}
