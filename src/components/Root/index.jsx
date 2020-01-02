@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import GenderSelectorContainer from '../../containers/GenderSelector';
 import DualSelectorContainer from '../../containers/DualSelector';
 import FinalViewContainer from '../../containers/FinalView';
+import ListPreviewContainer from '../../containers/ListPreview';
 import Loader from '../../components/Loader';
 import Logo from '../Icons/Baby';
 import Constants from '../../utils/constants';
@@ -19,6 +20,7 @@ export default class RootComponent extends PureComponent {
    */
   render() {
     const {
+      displayListPreview,
       genderType,
       isLoading,
       isSortingFinished,
@@ -53,6 +55,8 @@ export default class RootComponent extends PureComponent {
           <Loader />
         ) : isSortingFinished ? (
           <FinalViewContainer />
+        ) : displayListPreview ? (
+          <ListPreviewContainer />
         ) : (
           <DualSelectorContainer />
         )}
@@ -62,6 +66,7 @@ export default class RootComponent extends PureComponent {
 }
 
 RootComponent.propTypes = {
+  displayListPreview: PropTypes.bool.isRequired,
   genderType: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSortingFinished: PropTypes.bool.isRequired,

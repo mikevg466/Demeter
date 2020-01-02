@@ -27,6 +27,13 @@ export const namesInitialState = {
  */
 export default function namesReducer(state = namesInitialState, action) {
   switch (action.type) {
+    case types.DELETE_PREVIEW_NAME: {
+      const rawList = state.rawList.slice();
+      rawList.splice(action.index, 1);
+      return update(state, {
+        rawList: { $set: rawList },
+      });
+    }
     case types.INITIALIZE_SORTING_LIST: {
       const sortingList = splitArray(state.rawList);
       return update(state, {
