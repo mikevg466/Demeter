@@ -17,7 +17,7 @@ export const deletePreviewName = index => ({
  * Action creator for INITIALIZE_SORTING_LIST reducer
  * @return {Object} action with names array
  */
-export const initializeSortingList = () => ({
+export const _initializeSortingList = () => ({
   type: types.INITIALIZE_SORTING_LIST,
 });
 
@@ -72,6 +72,15 @@ export const sortSelectorNames = (compareValue, removeName = false) => ({
 });
 
 /**
+ * shuffles the rawList array then splits it to create the sorting list
+ * @return {undfined}
+ */
+export const initializeSortingList = () => dispatch => {
+  dispatch(shuffleNames());
+  dispatch(_initializeSortingList());
+};
+
+/**
  * Loads names from source which are shuffled and saved to the store
  * @param {String} [genderType='M'] M for male, F for female.  Defaults to M
  * @return {undfined}
@@ -81,9 +90,10 @@ export const loadNames = (genderType = 'M') => dispatch => {
   const names = NAMES.data
     .filter(({ gender }) => gender === genderType)
     .slice(0, 1000)
-    .map(({ name }) => name);
+    .map(({ name }) => name)
+    .sort();
 
-  dispatch(setNames(shuffle(names)));
+  dispatch(setNames(names));
 };
 
 /**
@@ -108,4 +118,15 @@ export const removeName = compareValue => dispatch => {
 export const selectName = compareValue => dispatch => {
   dispatch(sortSelectorNames(compareValue));
   dispatch(setSelectorNames());
+};
+
+/**
+ * Shuffles the rawList of names then updates the state with the new list.
+ * @return {undfined}
+ */
+export const shuffleNames = () => (dispatch, getState) => {
+  const {
+    names: { rawList },
+  } = getState();
+  dispatch(setNames(shuffle(rawList)));
 };
