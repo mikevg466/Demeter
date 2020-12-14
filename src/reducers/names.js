@@ -14,6 +14,7 @@ export const namesInitialState = {
   rightIdx: 0,
   isSortingFinished: false,
   genderType: '',
+  customName: '',
 };
 
 /**
@@ -27,6 +28,21 @@ export const namesInitialState = {
  */
 export default function namesReducer(state = namesInitialState, action) {
   switch (action.type) {
+    case types.ADD_CUSTOM_NAME: {
+      // do not add if name already exists
+      const isExistingName = state.rawList.some(
+        // eslint-disable-next-line comma-dangle
+        name => name.toLowerCase() === state.customName.toLowerCase()
+      );
+      if (isExistingName || !state.customName) {
+        return update(state, { customName: { $set: '' } });
+      }
+
+      return update(state, {
+        customName: { $set: '' },
+        rawList: { $push: [state.customName] },
+      });
+    }
     case types.DELETE_PREVIEW_NAME: {
       const rawList = state.rawList.slice();
       rawList.splice(action.index, 1);
@@ -53,6 +69,11 @@ export default function namesReducer(state = namesInitialState, action) {
         rightIdx: { $set: namesInitialState.rightIdx },
         isSortingFinished: { $set: namesInitialState.isSortingFinished },
       });
+    case types.SET_CUSTOM_NAME: {
+      return update(state, {
+        customName: { $set: action.name },
+      });
+    }
     case types.SET_GENDER_TYPE:
       return update(state, {
         genderType: { $set: action.genderType || '' },

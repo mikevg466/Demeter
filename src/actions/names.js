@@ -3,6 +3,10 @@ import { shuffle } from '../utils/array';
 import NAMES from '../assets/data/names.json';
 // import NAMES from '../assets/data/namesCustom.json';
 
+export const addCustomName = () => ({
+  type: types.ADD_CUSTOM_NAME,
+});
+
 /**
  * Action creator for DELETE_PREVIEW_NAME reducer
  * @param {Number} index The index of the array item to delete
@@ -27,6 +31,11 @@ export const _initializeSortingList = () => ({
  */
 export const resetNames = () => ({
   type: types.RESET_NAMES,
+});
+
+export const setCustomName = name => ({
+  type: types.SET_CUSTOM_NAME,
+  name,
 });
 
 /**

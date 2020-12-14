@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import CustomNameInput from '../../containers/CustomNameInput';
 import './ListPreview.scss';
 
 /**
@@ -16,6 +17,7 @@ export default class ListPreview extends PureComponent {
     const { deletePreviewName, initializeSortingList, rawList } = this.props;
     return (
       <div className='list-preview'>
+        <CustomNameInput />
         <span onClick={initializeSortingList}>Start</span>
         <ol>
           {rawList.map((name, index) => (

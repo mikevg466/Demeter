@@ -1,0 +1,48 @@
+@import '../../stylesheets/modules/classNames';
+@import '../../stylesheets/modules/colors';
+
+.#{$project-name} {
+  .custom-name-input {
+    display: flex;
+    flex-direction: row;
+
+    .input {
+      flex: 1;
+      font-size: 18px;
+    }
+
+    .button {
+      flex: 0 0 auto;
+      font-size: 26px;
+      font-weight: 900;
+      padding: 4px;
+      border: solid 1px;
+      border-radius: 25%;
+      cursor: pointer;
+    }
+
+    .button {
+      color: $boy-dark;
+      background-color: $boy-light;
+    }
+    .button:hover {
+      color: $boy-light;
+      background-color: $boy-dark;
+    }
+  }
+}
+
+.#{$project-name} {
+  .girl {
+    .custom-name-input {
+      .button {
+        color: $girl-dark;
+        background-color: $girl-light;
+      }
+      .button:hover {
+        color: $girl-light;
+        background-color: $girl-dark;
+      }
+    }
+  }
+}
