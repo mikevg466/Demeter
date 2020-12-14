@@ -5,14 +5,18 @@ import {
   mapStateToProps,
   mapDispatchToProps,
 } from '../../containers/Root';
-import { userInitialState } from '../../reducers/user';
+import { namesInitialState } from '../../reducers/names';
 
 const mockState = {
-  greeting: userInitialState.greeting,
-  name: userInitialState.name,
+  genderType: namesInitialState.genderType,
+  isSortingFinished: namesInitialState.isSortingFinished,
+  rawList: namesInitialState.rawList,
+  sortingList: namesInitialState.sortingList,
 };
 const mockDispatchers = {
-  setName: jest.fn(),
+  loadNames: jest.fn(),
+  setGenderType: jest.fn(),
+  setSelectorNames: jest.fn(),
 };
 const mockProps = {
   ...mockState,
@@ -28,18 +32,16 @@ describe('Root Container', () => {
   describe('mapStateToProps', () => {
     it('outputs the expected state when passed a mock store', () => {
       const mockStore = {
-        user: userInitialState,
+        names: namesInitialState,
       };
-      const expectedState = {
-        greeting: userInitialState.greeting,
-        name: userInitialState.name,
-      };
-      expect(mapStateToProps(mockStore)).toEqual(expectedState);
+
+      expect(mapStateToProps(mockStore)).toEqual(mockState);
     });
   });
 
   describe('mapDispatchToProps', () => {
     expect(Object.keys(mapDispatchToProps)).toEqual(
+      // eslint-disable-next-line comma-dangle
       Object.keys(mockDispatchers)
     );
   });

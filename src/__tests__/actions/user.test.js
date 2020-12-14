@@ -1,4 +1,4 @@
-import { UserActions } from '../../actions';
+import * as UserActions from '../../actions/user';
 import types from '../../actions/types';
 
 describe('User Actions', () => {
