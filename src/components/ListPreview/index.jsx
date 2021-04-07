@@ -17,8 +17,8 @@ export default class ListPreview extends PureComponent {
     const { deletePreviewName, initializeSortingList, rawList } = this.props;
     return (
       <div className='list-preview'>
-        <CustomNameInput />
         <span onClick={initializeSortingList}>Start</span>
+        <CustomNameInput />
         <ol>
           {rawList.map((name, index) => (
             <li key={name}>

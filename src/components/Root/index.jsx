@@ -49,17 +49,19 @@ export default class RootComponent extends PureComponent {
             </div>
           </div>
         </header>
-        {!isGenderSelected ? (
-          <GenderSelectorContainer />
-        ) : isLoading ? (
-          <Loader />
-        ) : isSortingFinished ? (
-          <FinalViewContainer />
-        ) : displayListPreview ? (
-          <ListPreviewContainer />
-        ) : (
-          <DualSelectorContainer />
-        )}
+        <div className='body'>
+          {!isGenderSelected ? (
+            <GenderSelectorContainer />
+          ) : isLoading ? (
+            <Loader />
+          ) : isSortingFinished ? (
+            <FinalViewContainer />
+          ) : displayListPreview ? (
+            <ListPreviewContainer />
+          ) : (
+            <DualSelectorContainer />
+          )}
+        </div>
       </div>
     );
   }
