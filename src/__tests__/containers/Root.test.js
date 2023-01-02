@@ -39,7 +39,7 @@ describe('Root Container', () => {
     });
   });
 
-  describe('mapDispatchToProps', () => {
+  it('mapDispatchToProps', () => {
     expect(Object.keys(mapDispatchToProps)).toEqual(
       // eslint-disable-next-line comma-dangle
       Object.keys(mockDispatchers)

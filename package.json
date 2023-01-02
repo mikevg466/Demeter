@@ -3,20 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "morgan": "^1.9.1",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "winston": "^3.2.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.57.1",
+    "winston": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "eslint --ext .jsx,.js --fix src&&stylelint src/**/*.{css,scss} --fix"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:react-hooks/recommended"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -30,29 +42,26 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.{js,jsx}": "eslint  --ext .jsx,.js --fix",
+    "*.{css,scss}": "stylelint src/**/*.{css,scss} --fix"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-adapter-react-16": "^1.15.7",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^6.5.0",
-    "eslint-plugin-jest": "^22.2.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "husky": "^3.0.9",
-    "immutability-helper": "^3.0.0",
-    "lint-staged": "^9.4.2",
-    "node-sass": "^4.12.0",
-    "prettier": "^1.16.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-redux": "^7.1.1",
-    "react-scripts": "3.2.0",
-    "react-test-renderer": "^16.7.0",
-    "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-jest": "^27.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2",
+    "immutability-helper": "^3.1.1",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "prop-types": "^15.8.1",
+    "react-test-renderer": "^18.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0"
   }
 }

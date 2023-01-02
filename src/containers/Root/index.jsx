@@ -19,10 +19,8 @@ export class RootContainer extends Component {
    */
   componentDidUpdate(prevProps) {
     const { genderType, loadNames, setSelectorNames, sortingList } = this.props;
-    const {
-      genderType: prevGenderType,
-      sortingList: prevSortingList,
-    } = prevProps;
+    const { genderType: prevGenderType, sortingList: prevSortingList } =
+      prevProps;
 
     if (sortingList !== prevSortingList) {
       setSelectorNames();

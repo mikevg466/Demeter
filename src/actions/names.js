@@ -94,16 +94,18 @@ export const initializeSortingList = () => dispatch => {
  * @param {String} [genderType='M'] M for male, F for female.  Defaults to M
  * @return {undfined}
  */
-export const loadNames = (genderType = 'M') => dispatch => {
-  dispatch(resetNames());
-  const names = NAMES.data
-    .filter(({ gender }) => gender === genderType)
-    .slice(0, 1000)
-    .map(({ name }) => name)
-    .sort();
+export const loadNames =
+  (genderType = 'M') =>
+    dispatch => {
+      dispatch(resetNames());
+      const names = NAMES.data
+        .filter(({ gender }) => gender === genderType)
+        .slice(0, 1000)
+        .map(({ name }) => name)
+        .sort();
 
-  dispatch(setNames(names));
-};
+      dispatch(setNames(names));
+    };
 
 /**
  * Removes a name from two choices and updates the sort list then sets new names

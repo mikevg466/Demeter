@@ -23,8 +23,8 @@ export default class BabyIcon extends PureComponent {
         version='1.1'
         viewBox='0 0 512.003 512.003'
         x='0px'
-        xmlns='http://www.w3.org/2000/svg'
         xmlSpace='preserve'
+        xmlns='http://www.w3.org/2000/svg'
         y='0px'
       >
         {/* eslint-disable max-len */}
