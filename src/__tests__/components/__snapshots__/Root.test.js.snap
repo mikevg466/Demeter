@@ -12,7 +12,9 @@ exports[`Root Component renders for boys 1`] = `
       </div>
     </div>
   </header>
-  <Connect(FinalViewContainer) />
+  <div className=\\"body\\">
+    <Connect(FinalViewContainer) />
+  </div>
 </div>"
 `;
 
@@ -28,7 +30,9 @@ exports[`Root Component renders for girls 1`] = `
       </div>
     </div>
   </header>
-  <Connect(FinalViewContainer) />
+  <div className=\\"body\\">
+    <Connect(FinalViewContainer) />
+  </div>
 </div>"
 `;
 
@@ -44,7 +48,9 @@ exports[`Root Component renders with displayListPreview set to false 1`] = `
       </div>
     </div>
   </header>
-  <Connect(FinalViewContainer) />
+  <div className=\\"body\\">
+    <Connect(FinalViewContainer) />
+  </div>
 </div>"
 `;
 
@@ -60,7 +66,9 @@ exports[`Root Component renders with isLoading set to true 1`] = `
       </div>
     </div>
   </header>
-  <Loader />
+  <div className=\\"body\\">
+    <Loader />
+  </div>
 </div>"
 `;
 
@@ -76,6 +84,8 @@ exports[`Root Component renders with isSortingFinished set to false 1`] = `
       </div>
     </div>
   </header>
-  <Connect(ListPreviewContainer) />
+  <div className=\\"body\\">
+    <Connect(ListPreviewContainer) />
+  </div>
 </div>"
 `;
