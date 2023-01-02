@@ -17,9 +17,12 @@
     "winston": "^3.8.2"
   },
   "scripts": {
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --env=jsdom --ci --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "format": "eslint --ext .jsx,.js --fix src&&stylelint src/**/*.{css,scss} --fix"
   },
