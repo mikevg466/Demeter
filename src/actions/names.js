@@ -98,6 +98,7 @@ export const loadNames = (genderType = 'M') => dispatch => {
   dispatch(resetNames());
   const names = NAMES.data
     .filter(({ gender }) => gender === genderType)
+    .sort((a, b) => b.number - a.number)
     .slice(0, 1000)
     .map(({ name }) => name)
     .sort();
