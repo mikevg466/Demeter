@@ -3,7 +3,7 @@ const round = number => Math.round(number * 100) / 100;
 const monitorReducerEnhancer = createStore => (
   reducer,
   initialState,
-  enhancer
+  enhancer,
 ) => {
   const monitoredReducer = (state, action) => {
     const start = performance.now();
