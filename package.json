@@ -11,6 +11,7 @@
     "winston": "^3.2.1"
   },
   "scripts": {
+    "prepare": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -37,11 +38,14 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.12.4",
     "husky": "^8.0.3",
     "immutability-helper": "^3.0.0",
     "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
     "prop-types": "^15.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
