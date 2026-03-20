@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RootContainer from './containers/Root';
+import RootContainer from './components/Root';
 import { Provider } from 'react-redux';
 import store from './store';
 import * as serviceWorker from './serviceWorker';

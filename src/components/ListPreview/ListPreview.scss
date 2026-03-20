@@ -33,7 +33,12 @@
         align-items: center;
         justify-content: flex-end;
 
-        .name {}
+        .name {
+          cursor: pointer;
+        }
+        .name:hover {
+          color: $boy-light;
+        }
         .delete-button {
           padding: 0 6px;
           color: #DD2C00;
@@ -62,6 +67,11 @@
 
       ol {
         color: $girl-dark;
+        li {
+          .name:hover {
+            color: $girl-light;
+          }
+        }
       }
     }
   }

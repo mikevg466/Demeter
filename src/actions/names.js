@@ -1,7 +1,23 @@
 import types from './types';
 import { shuffle } from '../utils/array';
-import NAMES from '../assets/data/names.json';
-// import NAMES from '../assets/data/namesCustom.json';
+// import NAMES from '../assets/data/names.json';
+// import NAMES from '../assets/data/mikeTop2023.json';
+import NAMES from '../assets/data/combinedTop2024.json';
+// import NAMES from '../assets/data/combinedMikeTop2023.json';
+
+export const moveName = (actionType, index) => ({
+  type: types.MOVE_NAME,
+  actionType,
+  index,
+});
+
+export const addInitialName = index => dispatch => {
+  dispatch(moveName('ADD', index));
+};
+
+export const removeInitialName = index => dispatch => {
+  dispatch(moveName('REMOVE', index));
+};
 
 export const addCustomName = () => ({
   type: types.ADD_CUSTOM_NAME,
@@ -55,6 +71,16 @@ export const setGenderType = genderType => ({
  */
 export const setNames = rawList => ({
   type: types.SET_NAMES,
+  rawList,
+});
+
+/**
+ * Action creator for SET_STARTING_NAMES reducer
+ * @param {Array} rawList Array of names to be set in the store
+ * @return {Object} action with names array
+ */
+export const setStartingNames = rawList => ({
+  type: types.SET_STARTING_NAMES,
   rawList,
 });
 
@@ -138,5 +164,5 @@ export const shuffleNames = () => (dispatch, getState) => {
   const {
     names: { rawList },
   } = getState();
-  dispatch(setNames(shuffle(rawList)));
+  dispatch(setStartingNames(shuffle(rawList)));
 };

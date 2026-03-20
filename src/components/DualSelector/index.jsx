@@ -1,13 +1,15 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NameContainer from '../NameContainer';
+import { removeName, selectName } from '../../actions/names';
 import './DualSelector.scss';
 
 /**
  * Selector Container For showing a user two options for selection
- * @extends PureComponent
+ * @extends Component
  */
-export default class DualSelector extends PureComponent {
+export class DualSelector extends Component {
   /**
    * React renderer
    * @return {JSX}
@@ -38,3 +40,18 @@ DualSelector.propTypes = {
   secondName: PropTypes.string.isRequired,
   selectName: PropTypes.func.isRequired,
 };
+
+export const mapStateToProps = state => ({
+  firstName: state.names.firstName,
+  secondName: state.names.secondName,
+});
+
+export const mapDispatchToProps = {
+  removeName,
+  selectName,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps //eslint-disable-line
+)(DualSelector);

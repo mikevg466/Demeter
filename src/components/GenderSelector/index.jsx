@@ -1,14 +1,16 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Constants from '../../utils/constants';
+import { setGenderType } from '../../actions/names';
 import './GenderSelector.scss';
 
 /**
  * Gender Selector Container for allowing the user to select which gender of
  *  names they would like to select from.
- * @extends PureComponent
+ * @extends Component
  */
-export default class GenderSelector extends PureComponent {
+export class GenderSelector extends Component {
   /**
    * React renderer
    * @return {JSX}
@@ -41,3 +43,12 @@ export default class GenderSelector extends PureComponent {
 GenderSelector.propTypes = {
   setGenderType: PropTypes.func.isRequired,
 };
+
+export const mapStateToProps = state => ({});
+
+export const mapDispatchToProps = { setGenderType };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps //eslint-disable-line
+)(GenderSelector);

@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { addCustomName, setCustomName } from '../../actions/names';
 import './CustomNameInput.scss';
 
 /**
  * Selector Container For showing a user two options for selection
- * @extends PureComponent
+ * @extends Component
  */
-export default class CustomNameInput extends PureComponent {
+export class CustomNameInput extends Component {
   /**
    * React renderer
    * @return {JSX}
@@ -34,3 +36,17 @@ CustomNameInput.propTypes = {
   customName: PropTypes.string.isRequired,
   setCustomName: PropTypes.func.isRequired,
 };
+
+export const mapStateToProps = state => ({
+  customName: state.names.customName,
+});
+
+export const mapDispatchToProps = {
+  addCustomName,
+  setCustomName,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps //eslint-disable-line
+)(CustomNameInput);

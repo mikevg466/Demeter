@@ -3,6 +3,7 @@ import types from '../actions/types';
 import { splitArray } from '../utils/array';
 
 export const namesInitialState = {
+  initialRawList: [],
   rawList: [],
   sortingList: [],
   currentSortList: [],
@@ -50,6 +51,21 @@ export default function namesReducer(state = namesInitialState, action) {
         rawList: { $set: rawList },
       });
     }
+    case types.MOVE_NAME: {
+      const { actionType, index } = action;
+      const nextInitialRawList = state.initialRawList.slice();
+      const nextRawList = state.rawList.slice();
+
+      const fromArray = actionType === 'ADD' ? nextInitialRawList : nextRawList;
+      const toArray = actionType === 'ADD' ? nextRawList : nextInitialRawList;
+
+      toArray.push(fromArray.splice(index, 1)[0]);
+
+      return update(state, {
+        initialRawList: { $set: nextInitialRawList },
+        rawList: { $set: nextRawList },
+      });
+    }
     case types.INITIALIZE_SORTING_LIST: {
       const sortingList = splitArray(state.rawList);
       return update(state, {
@@ -58,6 +74,7 @@ export default function namesReducer(state = namesInitialState, action) {
     }
     case types.RESET_NAMES:
       return update(state, {
+        initialRawList: { $set: namesInitialState.initialRawList },
         rawList: { $set: namesInitialState.rawList },
         sortingList: { $set: namesInitialState.sortingList },
         currentSortList: { $set: namesInitialState.currentSortList },
@@ -79,6 +96,10 @@ export default function namesReducer(state = namesInitialState, action) {
         genderType: { $set: action.genderType || '' },
       });
     case types.SET_NAMES:
+      return update(state, {
+        initialRawList: { $set: action.rawList || [] },
+      });
+    case types.SET_STARTING_NAMES:
       return update(state, {
         rawList: { $set: action.rawList || [] },
       });
