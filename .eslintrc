@@ -45,6 +45,9 @@
           "error",
           "as-needed"
         ],
+        "require-jsdoc": "off",
+        "valid-jsdoc": "off",
+        "max-len": "off",
         "react/display-name": 1,
         "react/jsx-boolean-value": 1,
         "react/jsx-no-undef": 1,
@@ -56,7 +59,7 @@
         "react/no-multi-comp": 1,
         "react/no-unknown-property": 1,
         "react/prop-types": 1,
-        "react/react-in-jsx-scope": 1,
+        "react/react-in-jsx-scope": "off",
         "react/self-closing-comp": 1
     }
 }
