@@ -5,14 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm start          # Dev server at http://localhost:3000
-npm test           # Jest in watch mode
+npm start          # Dev server (alias for react-router dev)
+npm run dev        # Dev server at http://localhost:5173
 npm run build      # Production build
-```
-
-To run a single test file:
-```bash
-npx react-scripts test --testPathPattern=<filename>
 ```
 
 Linting runs automatically on pre-commit via Husky + lint-staged (ESLint with Google base config + React plugin).
@@ -21,7 +16,7 @@ Linting runs automatically on pre-commit via Husky + lint-staged (ESLint with Go
 
 Demeter is a baby name ranking app. Users select a gender, curate a list of names, then do pairwise comparisons that drive a merge-sort algorithm to produce a ranked list.
 
-**Tech stack:** React 18, Redux + redux-thunk, SASS, `immutability-helper` for reducer state updates.
+**Tech stack:** React 19, React Router v7 (framework mode, SPA/ssr:false), Vite, Redux + redux-thunk, SASS, `immutability-helper` for reducer state updates.
 
 ### App flow
 
@@ -50,13 +45,20 @@ Demeter is a baby name ranking app. Users select a gender, curate a list of name
 
 ### Directory conventions
 
-- `src/components/` — presentational (stateless/PureComponent) React components
-- `src/containers/` — Redux-connected smart components
+- `src/components/` — all React components (functional, using hooks); previously split into components/ + containers/
 - `src/actions/` — action creators; async side-effects use redux-thunk (`getState` reads)
 - `src/reducers/` — pure reducer functions using `immutability-helper`
 - `src/utils/` — `shuffle()` (Fisher-Yates), `splitArray()`, gender constants
 - `src/assets/data/` — name JSON datasets
 
+### React Router v7 entry points
+
+- `src/root.jsx` — root layout component (rendered server-side); contains `<html>`, `<head>`, `<body>`, `<Outlet>`
+- `src/entry.client.jsx` — client-only hydration bootstrap; mounts `HydratedRouter` wrapped in Redux `Provider`
+- `src/routes.js` — route definitions using `@react-router/dev/routes`
+- `react-router.config.js` — framework config (`appDirectory: 'src'`, `ssr: false`)
+- `vite.config.js` — Vite config with `reactRouter()` plugin
+
 ### Store
 
-Dev builds include Redux DevTools (`composeWithDevTools`) and a logger middleware. Config lives in `src/store/`.
+Redux `Provider` lives in `src/entry.client.jsx` (not `root.jsx`) to avoid store creation during SSR. Dev builds include Redux DevTools (`composeWithDevTools`) and a logger middleware. Config lives in `src/store/`. Uses `import.meta.env.MODE` (Vite) to switch between dev and production store configs.
