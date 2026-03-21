@@ -45,6 +45,7 @@
           "error",
           "as-needed"
         ],
+        "comma-dangle": "off",
         "require-jsdoc": "off",
         "valid-jsdoc": "off",
         "max-len": "off",

@@ -1,8 +1,8 @@
 import types from './types';
 import { shuffle } from '../utils/array';
-// import NAMES from '../assets/data/names.json';
+import NAMES from '../assets/data/names.json';
 // import NAMES from '../assets/data/mikeTop2023.json';
-import NAMES from '../assets/data/combinedTop2024.json';
+// import NAMES from '../assets/data/combinedTop2024.json';
 // import NAMES from '../assets/data/combinedMikeTop2023.json';
 
 export const moveName = (actionType, index) => ({
